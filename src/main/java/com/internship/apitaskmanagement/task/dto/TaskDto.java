@@ -1,6 +1,7 @@
 package com.internship.apitaskmanagement.task.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.internship.apitaskmanagement.comment.Comment;
 import com.internship.apitaskmanagement.enums.Priority;
 import com.internship.apitaskmanagement.enums.Status;
 import com.internship.apitaskmanagement.user.UserShortDto;
@@ -44,5 +45,8 @@ public class TaskDto {
 
     @NotNull
     private Set<UserShortDto> executors;
+
+    @NotNull
+    private Set<Comment> comments;
 
 }

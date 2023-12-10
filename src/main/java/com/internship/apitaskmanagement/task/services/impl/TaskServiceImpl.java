@@ -44,7 +44,7 @@ public class TaskServiceImpl implements TaskService {
                 .orElseThrow(() -> new UserNotFoundException(
                         "Пользователя с таким username(" + username + ") не существует"));
 
-        Task result = TaskMapper.toTaskCreate(taskCreateDto, now, author, getExecutorsFromUsernames(taskCreateDto.usernames()));
+        Task result = TaskMapper.toTask(taskCreateDto, now, author, getExecutorsFromUsernames(taskCreateDto.usernames()));
         return TaskMapper.toTaskDto(taskRepository.save(result));
     }
 

@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TaskMapper {
 
-    public static Task toTaskCreate(TaskCreateDto taskCreateDto, LocalDateTime now, User author, Set<User> executors) {
+    public static Task toTask(TaskCreateDto taskCreateDto, LocalDateTime now, User author, Set<User> executors) {
         return Task.builder()
                 .heading(taskCreateDto.heading())
                 .description(taskCreateDto.description())
@@ -42,6 +42,7 @@ public class TaskMapper {
                 .priority(task.getPriority())
                 .author(UserMapper.toUserShortDto(task.getAuthor()))
                 .executors(UserMapper.toUserShortDto(task.getExecutors()))
+                .comments(task.getComments())
                 .build();
     }
 

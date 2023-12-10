@@ -1,5 +1,6 @@
 package com.internship.apitaskmanagement.task;
 
+import com.internship.apitaskmanagement.comment.Comment;
 import com.internship.apitaskmanagement.enums.Priority;
 import com.internship.apitaskmanagement.enums.Status;
 import com.internship.apitaskmanagement.user.models.Role;
@@ -62,6 +63,8 @@ public class Task {
     @ToString.Exclude
     private Set<User> executors = new HashSet<>();
 
+    @OneToMany(mappedBy="task")
+    private Set<Comment> comments = new HashSet<>();
 
     public Task() {
     }
