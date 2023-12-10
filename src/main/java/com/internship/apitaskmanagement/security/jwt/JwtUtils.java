@@ -1,7 +1,7 @@
 package com.internship.apitaskmanagement.security.jwt;
 
 
-import com.internship.apitaskmanagement.security.service.impl.MyUserDetails;
+import com.internship.apitaskmanagement.security.services.impl.MyUserDetails;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -25,7 +25,6 @@ public class JwtUtils {
 
     public String generateJwtToken(Authentication authentication) {
         MyUserDetails userPrincipal = (MyUserDetails) authentication.getPrincipal();
-
         return Jwts.builder()
                 .setSubject((userPrincipal.getEmail()))
                 .setIssuedAt(new Date())

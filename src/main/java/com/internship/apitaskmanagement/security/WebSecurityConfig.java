@@ -2,7 +2,7 @@ package com.internship.apitaskmanagement.security;
 
 import com.internship.apitaskmanagement.security.jwt.AuthEntryPointJwt;
 import com.internship.apitaskmanagement.security.jwt.AuthTokenFilter;
-import com.internship.apitaskmanagement.security.service.impl.MyUserDetailsServiceImpl;
+import com.internship.apitaskmanagement.security.services.impl.MyUserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -59,8 +59,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers("/api/test/**").permitAll()
+                        auth.requestMatchers("/api-task-management/auth/**").permitAll()
                                 .anyRequest().authenticated()
                 );
 
