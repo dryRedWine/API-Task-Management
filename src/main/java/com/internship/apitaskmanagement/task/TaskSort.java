@@ -17,9 +17,10 @@ public class TaskSort {
 
     public static Pageable sortByCreatedDate(Integer from, Integer size, String sortOrder) {
         if (sortOrder.equalsIgnoreCase(Order.CREATED_DATE_ASC.getOrder()))
-            return FromSizeRequest.of(from, size, Sort.by("creation_date").ascending());
+            return FromSizeRequest.of(from, size, Sort.by("created_date").ascending());
         else if (sortOrder.equalsIgnoreCase(Order.CREATED_DATE_DESC.getOrder()))
-            return FromSizeRequest.of(from, size, Sort.by("creation_date").descending());
+            return FromSizeRequest.of(from, size, Sort.by("created_date").descending());
+        else
             throw new CustomValidationException("Значение сортировки заданно не верно.");
     }
 }

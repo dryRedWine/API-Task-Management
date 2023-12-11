@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  apm:
+    build: ./apiTaskManagement
+    image: apm_image
+    container_name: apm_container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/api-task-management
+
+
+
+  db:
+    image: postgres:13.7-alpine
+    container_name: postgre_apm_container
+    ports:
+      - "6541:5432"
+    environment:
+     - POSTGRES_DB=api-task-management
+     - POSTGRES_USER=internship
+     - POSTGRES_PASSWORD=778899

@@ -37,5 +37,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("update Task t set t.status=?2 where t.id = ?1")
     void changeStatus(Long taskId, Status status);
 
-    List<Task> findAllByAuthorUsernameOrExecutorsContains(String username, User executor, Pageable pageable);
+    List<Task> findAllByAuthor_UsernameOrExecutorsContaining(String username, User executor, Pageable pageable);
+
+
 }

@@ -3,6 +3,7 @@ package com.internship.apitaskmanagement.task.services;
 import com.internship.apitaskmanagement.task.dto.*;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface TaskService {
 
@@ -20,6 +21,6 @@ public interface TaskService {
 
     TaskDto statusChange(String username, Long taskId, TaskStatusChangeDto taskStatusChangeDto);
 
-    Collection<TaskDto> findAllByUser(String username, Integer from, Integer size, String sortOrder);
+    List<TaskDto> findAllByUser(String username, Integer from, Integer size, String sortOrder);
 
 }

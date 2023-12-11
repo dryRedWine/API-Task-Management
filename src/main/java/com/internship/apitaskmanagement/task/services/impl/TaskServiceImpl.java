@@ -81,7 +81,7 @@ public class TaskServiceImpl implements TaskService {
                             "Пользователя с таким username(" + executor + ") не существует"));
             executors.add(temp);
         }
-            return executors;
+        return executors;
     }
 
     @Override
@@ -153,6 +153,6 @@ public class TaskServiceImpl implements TaskService {
         final User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException("Пользователя с таким username(" + username + ") не существует"));
         final Pageable pageable = TaskSort.sortByCreatedDate(from, size, sortOrder);
-        return TaskMapper.toTaskDto(taskRepository.findAllByAuthorUsernameOrExecutorsContains(username, user, pageable));
+        return TaskMapper.toTaskDto(taskRepository.findAllByAuthor_UsernameOrExecutorsContaining(username, user, pageable));
     }
 }

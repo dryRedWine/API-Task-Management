@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -91,12 +92,13 @@ public class TaskController {
     @GetMapping("/{username}/tasks")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_ONLY_READING')")
-    public Collection<TaskDto> findAllByUser(@PathVariable @NotBlank String username,
-                                             @RequestParam(value = "from", defaultValue = "0") @PositiveOrZero Integer from,
-                                             @RequestParam(value = "size", defaultValue = "10") @Positive Integer size,
-                                             @RequestParam(name = "order", defaultValue = "timeDesc") String sortOrder) {
+    public List<TaskDto> findAllByUser(@PathVariable @NotBlank String username,
+                                       @RequestParam @NotBlank String targetUser,
+                                       @RequestParam(value = "from", defaultValue = "0") @PositiveOrZero Integer from,
+                                       @RequestParam(value = "size", defaultValue = "10") @Positive Integer size,
+                                       @RequestParam(name = "order", defaultValue = "createdDateAsc") @NotBlank String sortOrder) {
         log.info("Get information about all tasks by user({})", username);
-        return taskService.findAllByUser(username, from, size, sortOrder);
+        return taskService.findAllByUser(targetUser, from, size, sortOrder);
     }
 
 
