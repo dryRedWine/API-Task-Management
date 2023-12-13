@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   apm:
-    build: ./apiTaskManagement
+    build:
+      dockerfile: Dockerfile
+      context: .
     image: apm_image
     container_name: apm_container
     ports:

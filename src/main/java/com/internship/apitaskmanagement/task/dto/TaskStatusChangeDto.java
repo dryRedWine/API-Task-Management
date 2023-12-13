@@ -1,7 +1,9 @@
 package com.internship.apitaskmanagement.task.dto;
 
 import com.internship.apitaskmanagement.enums.Status;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-// DTO для смены статуса исполнителем
-public record TaskStatusChangeDto(Status status) {
+
+@Schema(description = "DTO для смены статуса исполнителем")
+public record TaskStatusChangeDto(@Schema(description = "Статус") Status status) {
 }

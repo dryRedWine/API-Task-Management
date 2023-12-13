@@ -1,6 +1,8 @@
 package com.internship.apitaskmanagement.comment.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
-public record CommentUpdateDto(@NotBlank String text) {
+@Schema(description = "DTO для обновления комментария")
+public record CommentUpdateDto(@Schema(description = "Текст комментария") @NotBlank String text) {
 }

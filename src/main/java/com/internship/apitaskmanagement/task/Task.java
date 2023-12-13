@@ -63,6 +63,7 @@ public class Task {
     @ToString.Exclude
     private Set<User> executors = new HashSet<>();
 
+    @Builder.Default
     @OneToMany(mappedBy="task")
     private Set<Comment> comments = new HashSet<>();
 
