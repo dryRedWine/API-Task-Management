@@ -1,4 +1,4 @@
-# API Task Management System
+# Task Management API
 
 Изначально я составил план для проектирования api на scrum доске
 ![img_1.png](img_1.png)
