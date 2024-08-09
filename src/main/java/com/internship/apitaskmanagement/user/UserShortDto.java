@@ -6,6 +6,7 @@ import lombok.*;
 @Getter
 @ToString
 @AllArgsConstructor
+@EqualsAndHashCode
 public class UserShortDto {
 
     // DTO для вывода основной информации о пользователе, который является автором или исполнителем задачи

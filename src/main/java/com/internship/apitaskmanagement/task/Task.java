@@ -3,12 +3,10 @@ package com.internship.apitaskmanagement.task;
 import com.internship.apitaskmanagement.comment.Comment;
 import com.internship.apitaskmanagement.enums.Priority;
 import com.internship.apitaskmanagement.enums.Status;
-import com.internship.apitaskmanagement.user.models.Role;
 import com.internship.apitaskmanagement.user.models.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -64,7 +62,7 @@ public class Task {
     private Set<User> executors = new HashSet<>();
 
     @Builder.Default
-    @OneToMany(mappedBy="task")
+    @OneToMany(mappedBy = "task")
     private Set<Comment> comments = new HashSet<>();
 
     public Task() {
@@ -73,19 +71,22 @@ public class Task {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id.equals(task.id) && heading.equals(task.heading)
-                && description.equals(task.description)
-                && createdDate.equals(task.createdDate)
-                && Objects.equals(deadline, task.deadline)
-                && status == task.status
-                && priority == task.priority
-                && author.equals(task.author);
+        return Objects.equals(id, task.id) &&
+                Objects.equals(heading, task.heading) &&
+                Objects.equals(description, task.description) &&
+                Objects.equals(createdDate, task.createdDate) &&
+                Objects.equals(deadline, task.deadline) &&
+                status == task.status &&
+                priority == task.priority &&
+                Objects.equals(author, task.author) &&
+                Objects.equals(executors, task.executors) &&
+                Objects.equals(comments, task.comments);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(id, heading, description, createdDate, deadline, status, priority, author, executors, comments);
     }
 }

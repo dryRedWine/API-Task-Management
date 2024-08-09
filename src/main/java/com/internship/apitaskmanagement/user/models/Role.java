@@ -3,15 +3,17 @@ package com.internship.apitaskmanagement.user.models;
 import com.internship.apitaskmanagement.enums.ERole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 
-@Builder
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 @Entity
 @Table(name = "roles")
 public class Role {

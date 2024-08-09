@@ -8,6 +8,7 @@ import com.internship.apitaskmanagement.user.UserShortDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -18,6 +19,7 @@ import java.util.Set;
 @Builder
 @ToString
 @Schema(description = "DTO для вывода информации о задаче")
+@EqualsAndHashCode
 public class TaskDto {
 
     @NotNull
